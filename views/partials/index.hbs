@@ -1,0 +1,27 @@
+{{> header}}
+
+<h1>Оберіть місто:</h1>
+<ul>
+  {{#each cities}}
+    <li><a href="{{this.url}}">{{this.name}}</a></li>
+  {{/each}}
+  <li><a href="#" onclick="getLocation()">Моє місцезнаходження</a></li>
+</ul>
+
+{{> footer}}
+
+<script>
+  function getLocation() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function(position) {
+        const lat = position.coords.latitude;
+        const lon = position.coords.longitude;
+        window.location.href = `/weather?lat=${lat}&lon=${lon}`;
+      }, function() {
+        alert("Не вдалося отримати ваше місцезнаходження.");
+      });
+    } else {
+      alert("Геолокація не підтримується вашим браузером.");
+    }
+  }
+</script>
