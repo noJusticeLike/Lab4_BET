@@ -1,0 +1,16 @@
+{{> header}}
+
+{{#if weatherData.error}}
+  <div class="error">{{weatherData.error}}</div>
+{{else}}
+  <div class="weather-box">
+    <h1>{{weatherData.location}}</h1>
+    <img src="/img/{{weatherData.icon}}" alt="погода" class="weather-icon" />
+    <p class="temperature">{{weatherData.temperature}}°C</p>
+    <p class="feels-like">Відчувається як {{weatherData.feels_like}}°C</p>
+    <p class="humidity-number">Вологість: {{weatherData.humidity}}%</p>
+    <p class="wind-speed-number">Вітер: {{weatherData.wind_speed}} км/год</p>
+  </div>
+{{/if}}
+
+{{> footer}}
